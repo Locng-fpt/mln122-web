@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
+import { Footer } from './components/layout/Footer'
 
 const Home = lazy(() => import('./pages/Home'))
 const Theory = lazy(() => import('./pages/Theory'))
@@ -13,11 +14,16 @@ function App() {
           Đang tải...
         </div>
       }>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/theory" element={<Theory />} />
-          <Route path="/game" element={<Game />} />
-        </Routes>
+        <div className="flex flex-col min-h-screen">
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/theory" element={<Theory />} />
+              <Route path="/game" element={<Game />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </Suspense>
     </Router>
   )

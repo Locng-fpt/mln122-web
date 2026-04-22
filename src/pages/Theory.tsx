@@ -1,8 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import React, { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { useLocation } from 'react-router-dom'
+import { Header } from '../components/layout/Header'
 
 const Theory: React.FC = () => {
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.getElementById(hash.replace('#', ''))
+      if (element) {
+        setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100)
+      }
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [hash])
+
   return (
     <div className="min-h-screen bg-parchment-light text-ink-old font-garamond selection:bg-gold-classic/30">
       <Helmet>
@@ -11,19 +25,7 @@ const Theory: React.FC = () => {
         <meta property="og:title" content="Lý Thuyết | MLN122" />
       </Helmet>
 
-      {/* Header (Shared style) */}
-      <header className="border-b border-gold-classic/30 bg-parchment-old/80 sticky top-0 z-50 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-xl font-playfair font-bold text-sepia tracking-widest uppercase">
-            MLN122
-          </Link>
-          <nav className="hidden md:flex gap-8 text-sm tracking-widest uppercase items-center font-playfair">
-            <Link to="/" className="hover:text-gold-classic text-sepia/80 transition-colors duration-300">Trang chủ</Link>
-            <Link to="/game" className="hover:text-gold-classic text-sepia/80 transition-colors duration-300">Game Ghép Thẻ</Link>
-            <Link to="/theory" className="hover:text-gold-classic text-sepia transition-colors duration-300 border-b border-gold-classic">Lý Thuyết</Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-16 relative">
@@ -56,8 +58,11 @@ const Theory: React.FC = () => {
                 Công nghiệp hóa là quá trình chuyển đổi căn bản, toàn diện các hoạt động sản xuất kinh doanh, dịch vụ và quản lý kinh tế - xã hội... sang sử dụng lao động, cùng với công nghệ, phương tiện, phương pháp tiên tiến, hiện đại, dựa trên sự phát triển của công nghiệp và tiến bộ khoa học công nghệ, tạo ra năng suất lao động xã hội cao.
               </p>
               <p className="leading-loose text-justify text-ink-old/90">
-                Hiện đại hóa là quá trình ứng dụng và trang bị những thành tựu khoa học, công nghệ tiên tiến, hiện đại nhất vào trong các lĩnh vực của đời sống xã hội nhằm không ngừng nâng cao năng suất lao động và cải thiện chất lượng cuộc sống của nhân dân.
+                Hiện đại hóa là quá trình ứng dụng và trang bị những thành tựu khoa học, công nghệ tiên tiến, hiện đại nhất vào trong các lĩnh vực của đời sống xã hội nhằm không ngừng nâng cao năng suất lao động và cải thiện chất lượng cuộc sống của nhân dân. Hai quá trình này tuy có những điểm khác biệt nhưng luôn gắn kết hữu cơ, hỗ trợ và thúc đẩy lẫn nhau trong sự nghiệp phát triển kinh tế đất nước.
               </p>
+              <div className="w-full h-64 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
+                [Image Placeholder: Biểu đồ CNH-HĐH]
+              </div>
             </div>
           </section>
 
@@ -79,8 +84,11 @@ const Theory: React.FC = () => {
               <ul className="list-disc pl-6 space-y-3 leading-relaxed text-ink-old/90">
                 <li><span className="text-sepia font-semibold font-playfair">Thứ nhất:</span> Khắc phục nguy cơ tụt hậu xa hơn về kinh tế so với các nước trong khu vực và trên thế giới.</li>
                 <li><span className="text-sepia font-semibold font-playfair">Thứ hai:</span> Tạo nền tảng để phát triển nguồn nhân lực chất lượng cao, chuyển đổi sang nền kinh tế tri thức số hóa.</li>
-                <li><span className="text-sepia font-semibold font-playfair">Thứ ba:</span> Củng cố liên minh công - nông - trí, tăng cường tiềm lực quốc phòng, an ninh.</li>
+                <li><span className="text-sepia font-semibold font-playfair">Thứ ba:</span> Củng cố liên minh công - nông - trí, tăng cường tiềm lực quốc phòng, an ninh, đảm bảo sự phát triển bền vững và tự chủ của quốc gia trong bối cảnh toàn cầu hóa.</li>
               </ul>
+              <div className="w-full h-64 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
+                [Image Placeholder: Nguồn nhân lực & Công nghệ số]
+              </div>
             </div>
           </section>
 
@@ -103,9 +111,12 @@ const Theory: React.FC = () => {
                 Tác động của hội nhập:
               </p>
               <ul className="list-disc pl-6 space-y-3 leading-relaxed text-ink-old/90 mt-2">
-                <li><strong className="font-playfair text-sepia font-normal italic">Tích cực:</strong> Mở rộng thị trường xuất khẩu, thu hút FDI, tiếp thu công nghệ quản lý tiên tiến.</li>
-                <li><strong className="font-playfair text-sepia font-normal italic">Thách thức:</strong> Sức ép cạnh tranh gay gắt đối với doanh nghiệp nội địa, nguy cơ chênh lệch chất lượng nguồn nhân lực và phụ thuộc kinh tế.</li>
+                <li><strong className="font-playfair text-sepia font-normal italic">Tích cực:</strong> Mở rộng thị trường xuất khẩu, thu hút vốn đầu tư trực tiếp nước ngoài (FDI), tiếp thu công nghệ và kỹ năng quản lý tiên tiến.</li>
+                <li><strong className="font-playfair text-sepia font-normal italic">Thách thức:</strong> Sức ép cạnh tranh gay gắt đối với các doanh nghiệp nội địa, nguy cơ gia tăng chênh lệch chất lượng nguồn nhân lực và rủi ro phụ thuộc kinh tế nếu không có chiến lược tự chủ.</li>
               </ul>
+              <div className="w-full h-64 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
+                [Image Placeholder: Bản đồ Hội nhập WTO & ASEAN]
+              </div>
             </div>
           </section>
         </div>
@@ -135,23 +146,9 @@ const Theory: React.FC = () => {
         </aside>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-sepia/20 bg-parchment-old mt-20 py-16">
-        <div className="max-w-6xl mx-auto px-6 text-center flex flex-col items-center">
-          <div className="w-12 h-12 flex items-center justify-center border border-gold-classic/50 rounded-full mb-6 relative hover:scale-110 transition-transform duration-500 cursor-default">
-            <div className="absolute inset-1 border border-dashed border-sepia/30 rounded-full"></div>
-            <span className="text-sepia font-serif text-xl font-bold">M</span>
-          </div>
-          <p className="text-sm font-playfair uppercase tracking-widest text-sepia mb-3">
-            Trí tuệ — Chân lý — Cách mạng
-          </p>
-          <p className="text-sm font-garamond text-ink-old/60 tracking-wide">
-            © 2026 Nhóm SV FPT - Dự án MLN122. Triết học - Ánh sáng của chân lý.
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
-};
 
-export default Theory;
+    </div>
+  )
+}
+
+export default Theory
