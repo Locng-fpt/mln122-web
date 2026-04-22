@@ -1,8 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-parchment-light text-ink-old font-garamond selection:bg-gold-classic/30">
+      <Helmet>
+        <title>MLN122 - Công nghiệp hóa, Hiện đại hóa</title>
+        <meta name="description" content="Trang web trình bày Lý thuyết và Game tương tác về Triết học Mác - Lênin: Công nghiệp hóa, Hiện đại hóa và Hội nhập kinh tế quốc tế tại Việt Nam." />
+        <meta property="og:title" content="MLN122 - Công nghiệp hóa, Hiện đại hóa" />
+        <meta property="og:description" content="Dự án nhóm môn Triết học giới thiệu về CNH, HĐH và Hội nhập." />
+      </Helmet>
+
       {/* Header */}
       <header className="border-b border-gold-classic/30 bg-parchment-old/80 sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -10,10 +19,10 @@ const Home: React.FC = () => {
             MLN122
           </div>
           <nav className="hidden md:flex gap-8 text-sm tracking-widest uppercase items-center font-playfair">
-            <a href="#" className="hover:text-gold-classic text-sepia transition-colors duration-300">Trang chủ</a>
-            <a href="#" className="hover:text-gold-classic text-sepia/80 transition-colors duration-300">Game Ghép Thẻ</a>
-            <a href="#" className="hover:text-gold-classic text-sepia/80 transition-colors duration-300">Lý Thuyết</a>
-            <a href="#" className="hover:text-gold-classic text-sepia/80 transition-colors duration-300">Về Chúng Tôi</a>
+            <Link to="/" className="hover:text-gold-classic text-sepia transition-colors duration-300">Trang chủ</Link>
+            <Link to="/game" className="hover:text-gold-classic text-sepia/80 transition-colors duration-300">Game Ghép Thẻ</Link>
+            <Link to="/theory" className="hover:text-gold-classic text-sepia/80 transition-colors duration-300">Lý Thuyết</Link>
+            <a href="#muc-luc" className="hover:text-gold-classic text-sepia/80 transition-colors duration-300">Về Chúng Tôi</a>
           </nav>
         </div>
       </header>
@@ -33,9 +42,9 @@ const Home: React.FC = () => {
             <p className="text-xl md:text-2xl italic text-ink-old/80 mb-12 max-w-2xl leading-relaxed">
               Học thuyết khoa học và cách mạng cho thời đại mới.
             </p>
-            <button className="px-8 py-4 bg-transparent border-2 border-sepia text-sepia hover:bg-sepia hover:text-parchment-light transition-all duration-500 font-playfair uppercase tracking-widest text-sm shadow-[4px_4px_0px_#433422] hover:shadow-[0px_0px_0px_#433422] hover:-translate-y-px hover:translate-x-px">
+            <a href="#muc-luc" className="inline-block px-8 py-4 bg-transparent border-2 border-sepia text-sepia hover:bg-sepia hover:text-parchment-light transition-all duration-500 font-playfair uppercase tracking-widest text-sm shadow-[4px_4px_0px_#433422] hover:shadow-[0px_0px_0px_#433422] hover:-translate-y-px hover:translate-x-px">
               Bắt đầu khám phá
-            </button>
+            </a>
             <div className="w-16 h-px bg-gold-classic mt-16"></div>
           </div>
         </section>
@@ -81,9 +90,9 @@ const Home: React.FC = () => {
                   <p className="mb-6 text-ink-old/80 leading-relaxed text-justify text-lg">
                     Thử thách trí nhớ và sự am hiểu của bạn về các quy luật, phạm trù triết học thông qua tựa game ghép bài mang phong cách thư viện cổ kính. Tìm kiếm sự tương đồng, nối kết chân lý.
                   </p>
-                  <button className="px-6 py-3 border border-sepia text-sepia hover:bg-sepia hover:text-parchment-light transition-colors duration-300 font-playfair uppercase tracking-wider text-sm">
+                  <Link to="/game" className="inline-block px-6 py-3 border border-sepia text-sepia hover:bg-sepia hover:text-parchment-light transition-colors duration-300 font-playfair uppercase tracking-wider text-sm">
                     Khám phá Game
-                  </button>
+                  </Link>
                 </div>
                 {/* Visual placeholder for Game Cards */}
                 <div className="w-full md:w-56 h-72 bg-parchment-light border-2 border-sepia/30 flex items-center justify-center p-4 relative group cursor-pointer shadow-md">
@@ -101,7 +110,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* Sidebar (Quick Links/TOC) */}
-          <aside className="lg:col-span-4 self-start sticky top-32">
+          <aside className="lg:col-span-4 self-start sticky top-32" id="muc-luc">
             <div className="border-l border-sepia/20 pl-8">
               <h3 className="text-lg font-playfair text-sepia uppercase tracking-widest mb-8 flex items-center gap-3">
                 <span className="w-6 h-px bg-gold-classic"></span> Mục lục

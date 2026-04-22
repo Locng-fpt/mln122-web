@@ -12,3 +12,7 @@
   --font-playfair: "Playfair Display", serif;
   --font-garamond: "EB Garamond", serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
