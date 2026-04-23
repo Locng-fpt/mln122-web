@@ -47,7 +47,7 @@ export const ChatBox = () => {
   useEffect(() => {
     if (genAI && !chatSessionRef.current) {
       const model = genAI.getGenerativeModel({
-        model: 'gemini-2.5-flash-lite',
+        model: 'gemini-2.5-flash',
         systemInstruction: systemInstruction,
       });
       chatSessionRef.current = model.startChat({
