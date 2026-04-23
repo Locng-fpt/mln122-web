@@ -137,7 +137,9 @@ const Theory: React.FC = () => {
   }, [hash])
 
   return (
-    <div className="min-h-screen bg-parchment-light text-ink-old font-garamond selection:bg-gold-classic/30">
+    <div className="min-h-screen bg-gradient-to-b from-parchment-light via-white to-parchment-light text-ink-old font-garamond selection:bg-gold-classic/30" style={{
+      backgroundAttachment: 'fixed'
+    }}>
       <Helmet>
         <title>Lý Thuyết | MLN122 - CNH, HĐH & Hội Nhập</title>
         <meta name="description" content="Lý thuyết về Công nghiệp hóa, Hiện đại hóa và Hội nhập kinh tế quốc tế trong môn Triết học Mác - Lênin." />
@@ -147,142 +149,183 @@ const Theory: React.FC = () => {
       <Header />
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-16 relative">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative">
         
         {/* Main Area (Theory Sections) */}
-        <div className="lg:col-span-8 flex flex-col gap-16">
-          <div className="mb-8">
-            <div className="w-16 h-px bg-gold-classic mb-6"></div>
-            <h1 className="text-4xl md:text-5xl font-playfair font-black text-sepia tracking-tight mb-4 uppercase">
-              Tài Liệu Lý Thuyết
-            </h1>
-            <p className="text-xl italic text-ink-old/80">
-              Tìm hiểu về Công nghiệp hóa, Hiện đại hóa và Hội nhập kinh tế quốc tế tại Việt Nam.
+        <div className="lg:col-span-8 flex flex-col gap-12">
+          {/* Header Section with better styling */}
+          <div className="relative mb-16 md:mb-20 animate-fade-in" style={{
+            animation: 'fadeInDown 0.8s ease-out'
+          }}>
+            <div className="absolute -left-6 top-0 w-1.5 h-40 bg-gradient-to-b from-gold-classic via-gold-classic/50 to-transparent rounded-full"></div>
+            <div className="mb-8">
+              <span className="inline-block text-sm uppercase tracking-[0.3em] text-gold-classic font-medium mb-4 opacity-90">Thư viện tài liệu học tập</span>
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-prata text-sepia leading-tight mb-6 font-bold" style={{
+                letterSpacing: '-0.02em',
+                fontWeight: '700'
+              }}>
+                Tài Liệu<br />Lý Thuyết
+              </h1>
+            </div>
+            <p className="text-lg md:text-xl text-ink-old/70 leading-relaxed max-w-3xl font-merriweather font-light mb-8">
+              Một hành trình toàn diện khám phá Công nghiệp hóa, Hiện đại hóa và Hội nhập kinh tế quốc tế tại Việt Nam, từ lý thuyết cơ bản đến thực tiễn phức tạp.
             </p>
+            <div className="flex gap-4 items-center pt-2">
+              <div className="w-24 h-1.5 bg-gradient-to-r from-gold-classic via-gold-classic/40 to-transparent rounded-full"></div>
+              <span className="text-xs uppercase tracking-widest text-gold-classic/80 font-inter font-medium">Cập nhật: 2026</span>
+            </div>
           </div>
 
           {/* Chapter 1 */}
-          <section id="chapter-1" className="bg-parchment-old/50 p-8 md:p-12 border border-gold-classic/20 shadow-sm relative scroll-mt-24">
-            <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-gold-classic/50"></div>
-            <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-gold-classic/50"></div>
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-gold-classic/50"></div>
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold-classic/50"></div>
+          <section id="chapter-1" className="group bg-gradient-to-br from-amber-50/90 via-parchment-old/70 to-amber-50/50 p-8 md:p-12 border border-gold-classic/40 shadow-lg hover:shadow-2xl rounded-3xl relative scroll-mt-24 transition-all duration-500 transform hover:translate-y-[-6px] overflow-hidden" style={{
+            animation: 'slideUpIn 0.8s ease-out 0.1s both',
+            backdropFilter: 'blur(10px)'
+          }}>
+            {/* Decorative corners */}
+            <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-gold-classic/60 rounded-tl-lg group-hover:w-6 group-hover:h-6 transition-all duration-300"></div>
+            <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-gold-classic/60 rounded-tr-lg group-hover:w-6 group-hover:h-6 transition-all duration-300"></div>
+            <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-gold-classic/60 rounded-bl-lg group-hover:w-6 group-hover:h-6 transition-all duration-300"></div>
+            <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-gold-classic/60 rounded-br-lg group-hover:w-6 group-hover:h-6 transition-all duration-300"></div>
             
-            <span className="text-gold-classic opacity-80 font-playfair text-sm mb-2 block uppercase tracking-widest">Chương 1</span>
-            <h2 className="text-3xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b border-gold-classic/20 pb-4">
-              Khái Niệm Cơ Bản
-            </h2>
-            <div className="prose prose-lg md:prose-xl prose-stone max-w-none text-ink-old">
+            {/* Gradient accent line */}
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold-classic via-gold-classic/50 to-transparent rounded-l-3xl"></div>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 mb-5">
+                <div className="w-1.5 h-6 bg-gradient-to-b from-gold-classic to-gold-classic/40 rounded-full"></div>
+                <span className="text-gold-classic/90 font-inter text-sm font-bold uppercase tracking-widest">Chương 1</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-prata text-sepia mb-8 tracking-tight leading-tight border-b-2 border-gold-classic/30 pb-6 transition-all duration-300 group-hover:border-gold-classic/60 group-hover:text-amber-900">
+                Khái Niệm Cơ Bản
+              </h2>
+            </div>
+            <div className="prose prose-lg md:prose-lg prose-stone max-w-none text-ink-old">
               {/* Section 1.1 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">1. Công nghiệp hóa là gì?</h3>
-              <p className="first-letter:text-6xl first-letter:font-playfair first-letter:text-gold-classic first-letter:float-left first-letter:mr-3 first-letter:leading-none leading-loose text-justify mb-4">
+              <h3 className="text-3xl font-prata text-sepia mt-10 mb-6 tracking-tight leading-tight">1. Công nghiệp hóa là gì?</h3>
+              <p className="first-letter:text-7xl first-letter:font-prata first-letter:text-gold-classic first-letter:float-left first-letter:mr-4 first-letter:leading-none leading-relaxed text-justify mb-6 font-merriweather text-ink-old/80 text-lg">
                 Công nghiệp hóa (CNH) là quá trình chuyển đổi nền kinh tế từ dựa chủ yếu vào nông nghiệp sang phát triển công nghiệp và dịch vụ, dựa trên việc:
               </p>
-              <ul className="list-disc pl-6 space-y-3 leading-relaxed text-ink-old/90 mb-4">
+              <ul className="list-none pl-0 space-y-4 mb-6">
                 <li>Tăng cường sử dụng máy móc, công nghệ</li>
                 <li>Nâng cao năng suất lao động</li>
                 <li>Chuyển dịch cơ cấu kinh tế theo hướng hiện đại</li>
               </ul>
-              <div className="bg-gold-classic/10 border-l-4 border-gold-classic p-4 mb-6 italic">
-                <p className="font-semibold text-sepia mb-2">👉 Nói đơn giản:</p>
-                <p>Từ "làm thủ công, quy mô nhỏ" → sang "sản xuất công nghiệp, quy mô lớn"</p>
+              <div className="bg-gradient-to-br from-gold-classic/12 via-transparent to-transparent border-l-4 border-gold-classic/60 p-6 mb-8 rounded-lg hover:shadow-md transition-all duration-300 backdrop-blur-sm">
+                <p className="font-inter font-semibold text-sepia mb-3 flex items-center gap-2"><span className="text-xl">💡</span> Nói đơn giản:</p>
+                <p className="font-merriweather text-ink-old/75">Từ <span className="font-semibold">"làm thủ công, quy mô nhỏ"</span> → sang <span className="font-semibold">"sản xuất công nghiệp, quy mô lớn"</span></p>
               </div>
 
               {/* Section 1.2 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">2. Hiện đại hóa là gì?</h3>
-              <p className="leading-loose text-justify mb-4">
+              <h3 className="text-3xl font-prata text-sepia mt-12 mb-6 tracking-tight leading-tight">2. Hiện đại hóa là gì?</h3>
+              <p className="leading-relaxed text-justify mb-6 font-merriweather text-ink-old/80 text-lg">
                 Hiện đại hóa (HĐH) là quá trình ứng dụng công nghệ tiên tiến, phương pháp quản lý hiện đại vào mọi lĩnh vực của nền kinh tế và xã hội, nhằm:
               </p>
-              <ul className="list-disc pl-6 space-y-3 leading-relaxed text-ink-old/90 mb-4">
+              <ul className="list-none pl-0 space-y-4 mb-6">
                 <li>Nâng cao chất lượng sản xuất</li>
                 <li>Tăng hiệu quả kinh tế</li>
                 <li>Tiếp cận trình độ phát triển của thế giới</li>
               </ul>
-              <div className="bg-gold-classic/10 border-l-4 border-gold-classic p-4 mb-6 italic">
-                <p className="font-semibold text-sepia mb-2">👉 Nói đơn giản:</p>
-                <p>Làm mọi thứ "thông minh hơn, hiệu quả hơn" nhờ công nghệ và tri thức</p>
+              <div className="bg-gradient-to-br from-gold-classic/12 via-transparent to-transparent border-l-4 border-gold-classic/60 p-6 mb-8 rounded-lg hover:shadow-md transition-all duration-300 backdrop-blur-sm">
+                <p className="font-inter font-semibold text-sepia mb-3 flex items-center gap-2"><span className="text-xl">💡</span> Nói đơn giản:</p>
+                <p className="font-merriweather text-ink-old/75">Làm mọi thứ <span className="font-semibold">"thông minh hơn, hiệu quả hơn"</span> nhờ công nghệ và tri thức</p>
               </div>
 
               {/* Section 1.3 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">3. Mối quan hệ giữa CNH và HĐH</h3>
+              <h3 className="text-3xl font-prata text-sepia mt-12 mb-6 tracking-tight leading-tight">3. Mối quan hệ giữa CNH và HĐH</h3>
               <ul className="list-disc pl-6 space-y-3 leading-relaxed text-ink-old/90 mb-4">
                 <li>Công nghiệp hóa là nền tảng (xây dựng cơ sở vật chất, phát triển sản xuất)</li>
                 <li>Hiện đại hóa là bước nâng cao (đưa công nghệ và tri thức vào để tối ưu)</li>
               </ul>
-              <div className="bg-sepia/5 p-6 mb-6 border border-sepia/20">
-                <p className="font-semibold text-sepia mb-3">👉 Hai quá trình:</p>
-                <ul className="list-disc pl-6 space-y-2 text-ink-old/90 mb-4">
+              <div className="bg-gradient-to-br from-sepia/8 to-sepia/3 p-6 mb-6 border border-sepia/30 rounded-xl hover:shadow-lg transition-all duration-300">
+                <p className="font-semibold text-sepia mb-3 flex items-center gap-2"><span>👉</span> Hai quá trình:</p>
+                <ul className="list-disc pl-6 space-y-2 text-ink-old/90 mb-5">
                   <li>Diễn ra song song</li>
                   <li>Không thể tách rời</li>
                 </ul>
-                <p className="font-semibold text-sepia mb-3">📌 Có thể hiểu:</p>
-                <div className="bg-parchment-light p-3 rounded border border-gold-classic/30">
-                  <p className="text-ink-old/80">CNH = "Xây nhà"</p>
-                  <p className="text-ink-old/80">HĐH = "Trang bị nhà thông minh"</p>
+                <p className="font-semibold text-sepia mb-3 flex items-center gap-2"><span>📌</span> Có thể hiểu:</p>
+                <div className="bg-gradient-to-r from-parchment-light to-white p-4 rounded-lg border border-gold-classic/40 space-y-2">
+                  <p className="text-ink-old/85 font-medium">CNH = "Xây nhà"</p>
+                  <p className="text-ink-old/85 font-medium">HĐH = "Trang bị nhà thông minh"</p>
                 </div>
               </div>
 
               {/* Section 1.4 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">⚡ Hiểu nhanh trong 30 giây</h3>
-              <div className="bg-gold-classic/5 p-6 border border-gold-classic/20 mb-4">
-                <ul className="list-disc pl-6 space-y-2 text-ink-old/90 mb-4">
-                  <li><strong>CNH:</strong> Chuyển từ nông nghiệp → công nghiệp</li>
-                  <li><strong>HĐH:</strong> Áp dụng công nghệ hiện đại vào mọi lĩnh vực</li>
-                  <li><strong>CNH + HĐH:</strong> Vừa mở rộng sản xuất, vừa nâng cao chất lượng</li>
+              <h3 className="text-3xl font-prata text-sepia mt-12 mb-6 tracking-tight leading-tight">⚡ Hiểu nhanh trong 30 giây</h3>
+              <div className="bg-gradient-to-br from-gold-classic/12 to-transparent p-6 border border-gold-classic/30 mb-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                <ul className="list-none space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="text-gold-classic font-bold text-lg flex-shrink-0">•</span>
+                    <span className="text-ink-old/90"><strong className="text-sepia">CNH:</strong> Chuyển từ nông nghiệp → công nghiệp</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-gold-classic font-bold text-lg flex-shrink-0">•</span>
+                    <span className="text-ink-old/90"><strong className="text-sepia">HĐH:</strong> Áp dụng công nghệ hiện đại vào mọi lĩnh vực</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-gold-classic font-bold text-lg flex-shrink-0">•</span>
+                    <span className="text-ink-old/90"><strong className="text-sepia">CNH + HĐH:</strong> Vừa mở rộng sản xuất, vừa nâng cao chất lượng</span>
+                  </li>
                 </ul>
               </div>
 
-              <div className="bg-sepia/10 border-l-4 border-sepia p-4 mb-8">
-                <p className="font-semibold text-sepia mb-2">👉 Mục tiêu cuối cùng:</p>
-                <p className="text-ink-old/90">Tăng năng suất – nâng cao đời sống – phát triển đất nước</p>
+              <div className="bg-gradient-to-r from-sepia/12 to-transparent border-l-4 border-sepia/80 p-5 mb-8 rounded-r-lg hover:shadow-md transition-all duration-300">
+                <p className="font-semibold text-sepia mb-2 flex items-center gap-2"><span>👉</span> Mục tiêu cuối cùng:</p>
+                <p className="text-ink-old/85 font-medium">Tăng năng suất – nâng cao đời sống – phát triển đất nước</p>
               </div>
 
               {/* Schematic Diagram */}
-              <div className="mt-10 mb-6">
-                <img 
-                  src="/images/vietnam-cnh-hdh-schematic.png" 
-                  alt="Vietnam CNH - HDH Transformation Schematic" 
-                  className="w-full h-auto border border-sepia/30 rounded shadow-md"
-                />
-                <p className="text-sm text-center text-sepia/70 italic mt-3">Hình 1.1: Sơ đồ chuyển đổi CNH - HĐH ở Việt Nam</p>
+              <div className="mt-10 mb-8 group">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img 
+                    src="/images/vietnam-cnh-hdh-schematic.png" 
+                    alt="Vietnam CNH - HDH Transformation Schematic" 
+                    className="w-full h-auto border border-sepia/20 rounded-2xl transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-sm text-center text-sepia/70 italic mt-4 font-medium">Hình 1.1: Sơ đồ chuyển đổi CNH - HĐH ở Việt Nam</p>
               </div>
 
               {/* Compare Diagram */}
-              <div className="mt-10 mb-6">
-                <img 
-                  src="/images/Compare.png" 
-                  alt="Compare CNH and HDH" 
-                  className="w-full h-auto border border-sepia/30 rounded shadow-md"
-                />
-                <p className="text-sm text-center text-sepia/70 italic mt-3">Hình 1.2: So sánh CNH và HĐH</p>
+              <div className="mt-10 mb-8 group">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img 
+                    src="/images/Compare.png" 
+                    alt="Compare CNH and HDH" 
+                    className="w-full h-auto border border-sepia/20 rounded-2xl transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-sm text-center text-sepia/70 italic mt-4 font-medium">Hình 1.2: So sánh CNH và HĐH</p>
               </div>
 
               {/* Basic Upgrade Diagram */}
-              <div className="mt-10 mb-6">
-                <img 
-                  src="/images/Basic_Upgrade.png" 
-                  alt="Basic Upgrade CNH and HDH" 
-                  className="w-full h-auto border border-sepia/30 rounded shadow-md"
-                />
-                <p className="text-sm text-center text-sepia/70 italic mt-3">Hình 1.3: Nâng cấp cơ bản CNH - HĐH</p>
+              <div className="mt-10 mb-6 group">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img 
+                    src="/images/Basic_Upgrade.png" 
+                    alt="Basic Upgrade CNH and HDH" 
+                    className="w-full h-auto border border-sepia/20 rounded-2xl transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-sm text-center text-sepia/70 italic mt-4 font-medium">Hình 1.3: Nâng cấp cơ bản CNH - HĐH</p>
               </div>
             </div>
           </section>
 
           {/* Chapter 2 */}
-          <section id="chapter-2" className="bg-parchment-old/50 p-8 md:p-12 border border-gold-classic/20 shadow-sm relative scroll-mt-24">
-            <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-gold-classic/50"></div>
-            <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-gold-classic/50"></div>
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-gold-classic/50"></div>
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold-classic/50"></div>
-            
-            <span className="text-gold-classic opacity-80 font-playfair text-sm mb-2 block uppercase tracking-widest">Chương 2</span>
-            <h2 className="text-3xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b border-gold-classic/20 pb-4">
-              Nội Dung Và Đặc Trưng CNH – HĐH Ở Việt Nam
-            </h2>
+          <section id="chapter-2" className="group bg-gradient-to-br from-blue-50/90 via-parchment-old/70 to-blue-50/50 p-8 md:p-12 border border-blue-400/40 shadow-lg hover:shadow-2xl rounded-3xl relative scroll-mt-24 transition-all duration-500 transform hover:translate-y-[-6px] overflow-hidden" style={{
+            animation: 'slideUpIn 0.8s ease-out 0.2s both',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 via-blue-500/50 to-transparent rounded-l-3xl"></div>
+            <div className="relative z-10">
+              <span className="inline-block text-blue-600 opacity-95 font-playfair text-xs mb-3 uppercase tracking-widest font-bold px-3 py-1 bg-blue-500/10 rounded-full border border-blue-400/30">Chương 2</span>
+              <h2 className="text-3xl md:text-4xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b-3 border-blue-400/40 pb-4 transition-all duration-300 group-hover:border-blue-400/70 group-hover:text-blue-900">
+                Nội Dung Và Đặc Trưng CNH – HĐH Ở Việt Nam
+              </h2>
+            </div>
             <div className="prose prose-lg md:prose-xl prose-stone max-w-none text-ink-old">
               {/* Section 2.1 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">1. Chuyển dịch cơ cấu kinh tế</h3>
+              <h3 className="text-3xl font-prata text-sepia mt-12 mb-6 tracking-tight leading-tight">1. Chuyển dịch cơ cấu kinh tế</h3>
               
               <h4 className="text-xl font-playfair text-sepia/90 mt-6 mb-3">Khái niệm:</h4>
               <p className="leading-loose text-justify mb-4">
@@ -293,7 +336,7 @@ const Theory: React.FC = () => {
                 <li>→ sang công nghiệp và dịch vụ chiếm tỷ trọng lớn hơn</li>
               </ul>
 
-              <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">👉 Biểu hiện cụ thể:</h4>
+              <h4 className="text-lg font-merriweather text-sepia/90 mt-7 mb-4 font-semibold">👉 Biểu hiện cụ thể:</h4>
               <ul className="list-disc pl-6 space-y-2 leading-relaxed text-ink-old/90 mb-6">
                 <li>Tỷ trọng nông nghiệp giảm</li>
                 <li>Tỷ trọng công nghiệp và dịch vụ tăng</li>
@@ -487,19 +530,20 @@ const Theory: React.FC = () => {
           </section>
 
           {/* Chapter 3 */}
-          <section id="chapter-3" className="bg-parchment-old/50 p-8 md:p-12 border border-gold-classic/20 shadow-sm relative scroll-mt-24">
-            <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-gold-classic/50"></div>
-            <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-gold-classic/50"></div>
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-gold-classic/50"></div>
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold-classic/50"></div>
-            
-            <span className="text-gold-classic opacity-80 font-playfair text-sm mb-2 block uppercase tracking-widest">Chương 3</span>
-            <h2 className="text-3xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b border-gold-classic/20 pb-4">
-              Vai Trò Và Ý Nghĩa
-            </h2>
+          <section id="chapter-3" className="group bg-gradient-to-br from-green-50/90 via-parchment-old/70 to-green-50/50 p-8 md:p-12 border border-green-400/40 shadow-lg hover:shadow-2xl rounded-3xl relative scroll-mt-24 transition-all duration-500 transform hover:translate-y-[-6px] overflow-hidden" style={{
+            animation: 'slideUpIn 0.8s ease-out 0.3s both',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-green-500 via-green-500/50 to-transparent rounded-l-3xl"></div>
+            <div className="relative z-10">
+              <span className="inline-block text-green-600 opacity-95 font-playfair text-xs mb-3 uppercase tracking-widest font-bold px-3 py-1 bg-green-500/10 rounded-full border border-green-400/30">Chương 3</span>
+              <h2 className="text-3xl md:text-4xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b-3 border-green-400/40 pb-4 transition-all duration-300 group-hover:border-green-400/70 group-hover:text-green-900">
+                Vai Trò Và Ý Nghĩa
+              </h2>
+            </div>
             <div className="prose prose-lg md:prose-xl prose-stone max-w-none text-ink-old">
               {/* Section 3.1 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">1. Thúc đẩy tăng trưởng kinh tế</h3>
+              <h3 className="text-3xl font-prata text-sepia mt-12 mb-6 tracking-tight leading-tight">1. Thúc đẩy tăng trưởng kinh tế</h3>
               
               <p className="leading-loose text-justify mb-4">
                 CNH – HĐH là động lực quan trọng giúp nền kinh tế tăng trưởng nhanh và bền vững.
@@ -512,13 +556,15 @@ const Theory: React.FC = () => {
                 <li>Mở rộng quy mô sản xuất</li>
               </ul>
 
-              <div className="my-8">
-                <img 
-                  src="/images/GPD.png" 
-                  alt="Biểu đồ tăng trưởng GDP Việt Nam" 
-                  className="w-full h-auto border border-sepia/30 rounded shadow-md"
-                />
-                <p className="text-sm text-center text-sepia/70 italic mt-3">Hình 3.1: Biểu đồ tăng trưởng GDP Việt Nam</p>
+              <div className="my-8 group">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img 
+                    src="/images/GPD.png" 
+                    alt="Biểu đồ tăng trưởng GDP Việt Nam" 
+                    className="w-full h-auto border border-sepia/20 rounded-2xl transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-sm text-center text-sepia/70 italic mt-4 font-medium">Hình 3.1: Biểu đồ tăng trưởng GDP Việt Nam</p>
               </div>
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">📌 Ý nghĩa:</h4>
@@ -594,13 +640,15 @@ const Theory: React.FC = () => {
 
               {/* Quick Understanding */}
               <h3 className="text-2xl font-playfair text-sepia mt-10 mb-4 tracking-wider">⚡ Hiểu nhanh toàn phần</h3>
-              <div className="my-8">
-                <img 
-                  src="/images/Finance_result.png" 
-                  alt="Tóm tắt kết quả tài chính và phát triển kinh tế" 
-                  className="w-full h-auto border border-sepia/30 rounded shadow-md"
-                />
-                <p className="text-sm text-center text-sepia/70 italic mt-3">Hình 3.4: Tóm tắt kết quả tài chính và phát triển kinh tế</p>
+              <div className="my-8 group">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img 
+                    src="/images/Finance_result.png" 
+                    alt="Tóm tắt kết quả tài chính và phát triển kinh tế" 
+                    className="w-full h-auto border border-sepia/20 rounded-2xl transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-sm text-center text-sepia/70 italic mt-4 font-medium">Hình 3.4: Tóm tắt kết quả tài chính và phát triển kinh tế</p>
               </div>
 
               {/* Quick Notes */}
@@ -629,19 +677,20 @@ const Theory: React.FC = () => {
 
 
           {/* Chapter 4 */}
-          <section id="chapter-4" className="bg-parchment-old/50 p-8 md:p-12 border border-gold-classic/20 shadow-sm relative scroll-mt-24">
-            <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-gold-classic/50"></div>
-            <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-gold-classic/50"></div>
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-gold-classic/50"></div>
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold-classic/50"></div>
-            
-            <span className="text-gold-classic opacity-80 font-playfair text-sm mb-2 block uppercase tracking-widest">Chương 4</span>
-            <h2 className="text-3xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b border-gold-classic/20 pb-4">
-              Thực Trạng Ở Việt Nam
-            </h2>
+          <section id="chapter-4" className="group bg-gradient-to-br from-purple-50/90 via-parchment-old/70 to-purple-50/50 p-8 md:p-12 border border-purple-400/40 shadow-lg hover:shadow-2xl rounded-3xl relative scroll-mt-24 transition-all duration-500 transform hover:translate-y-[-6px] overflow-hidden" style={{
+            animation: 'slideUpIn 0.8s ease-out 0.4s both',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-500 via-purple-500/50 to-transparent rounded-l-3xl"></div>
+            <div className="relative z-10">
+              <span className="inline-block text-purple-600 opacity-95 font-playfair text-xs mb-3 uppercase tracking-widest font-bold px-3 py-1 bg-purple-500/10 rounded-full border border-purple-400/30">Chương 4</span>
+              <h2 className="text-3xl md:text-4xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b-3 border-purple-400/40 pb-4 transition-all duration-300 group-hover:border-purple-400/70 group-hover:text-purple-900">
+                Thực Trạng Ở Việt Nam
+              </h2>
+            </div>
             <div className="prose prose-lg md:prose-xl prose-stone max-w-none text-ink-old">
               {/* Section 4.1 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">1. Thành tựu</h3>
+              <h3 className="text-3xl font-prata text-sepia mt-12 mb-6 tracking-tight leading-tight">1. Thành tựu</h3>
               
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">👉 Những kết quả nổi bật trong quá trình CNH – HĐH:</h4>
               
@@ -836,23 +885,38 @@ const Theory: React.FC = () => {
           </section>
 
           {/* Chapter 5 */}
-          <section id="chapter-5" className="bg-parchment-old/50 p-8 md:p-12 border border-gold-classic/20 shadow-sm relative scroll-mt-24">
-            <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-gold-classic/50"></div>
-            <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-gold-classic/50"></div>
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-gold-classic/50"></div>
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold-classic/50"></div>
-            
-            <span className="text-gold-classic opacity-80 font-playfair text-sm mb-2 block uppercase tracking-widest">Chương 5</span>
-            <h2 className="text-3xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b border-gold-classic/20 pb-4">
-              Vấn Đề Và Thách Thức
-            </h2>
+          <section id="chapter-5" className="group bg-gradient-to-br from-red-50/90 via-parchment-old/70 to-red-50/50 p-8 md:p-12 border border-red-400/40 shadow-lg hover:shadow-2xl rounded-3xl relative scroll-mt-24 transition-all duration-500 transform hover:translate-y-[-6px] overflow-hidden" style={{
+            animation: 'slideUpIn 0.8s ease-out 0.5s both',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-red-500 via-red-500/50 to-transparent rounded-l-3xl"></div>
+            <div className="relative z-10">
+              <span className="inline-block text-red-600 opacity-95 font-playfair text-xs mb-3 uppercase tracking-widest font-bold px-3 py-1 bg-red-500/10 rounded-full border border-red-400/30">Chương 5</span>
+              <h2 className="text-3xl md:text-4xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b-3 border-red-400/40 pb-4 transition-all duration-300 group-hover:border-red-400/70 group-hover:text-red-900">
+                Vấn Đề Và Thách Thức
+              </h2>
+            </div>
             <div className="prose prose-lg md:prose-xl prose-stone max-w-none text-ink-old">
               {/* Section 5.1 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">1. Bẫy thu nhập trung bình</h3>
-              
+              <h3 className="text-3xl font-prata text-sepia mt-12 mb-6 tracking-tight leading-tight">1. Bẫy thu nhập trung bình</h3>
+              <div className="w-full my-8 bg-white border-2 border-red-400/30 rounded-lg p-6 shadow-lg">
+  <h4 className="text-lg font-playfair text-sepia mb-4">📹 Khái niệm về bẫy thu nhập trung bình</h4>
+  <div className="w-full aspect-video">
+    <iframe 
+      className="w-full h-full rounded-lg"
+      src="https://www.youtube.com/embed/3kPyRoivoko" 
+      title="YouTube video player" 
+      frameBorder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowFullScreen={true}
+    ></iframe>
+  </div>
+</div>
               <h4 className="text-xl font-playfair text-sepia/90 mt-6 mb-3">Khái niệm:</h4>
               <p className="leading-loose text-justify mb-4">
-                Là tình trạng một quốc gia đạt mức thu nhập trung bình nhưng không thể vươn lên nhóm nước phát triển.
+                1. Bẫy thu nhập trung bình là gì?
+Hiểu đơn giản, đây là tình trạng một quốc gia sau khi thoát nghèo và vươn lên mức thu nhập trung bình thì bị "kẹt" lại ở mức đó, không thể trở thành nước giàu
+. Nguyên nhân là do những lợi thế cũ như nhân công giá rẻ hay giá vốn thấp không còn tác dụng, trong khi cơ cấu kinh tế còn đơn giản, chưa cạnh tranh lại các nước phát triển
               </p>
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">👉 Biểu hiện:</h4>
@@ -866,10 +930,6 @@ const Theory: React.FC = () => {
                   </ul>
                 </li>
               </ul>
-
-              <div className="w-full h-48 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
-                [Image Placeholder: Sơ đồ Thu nhập thấp → Trung bình → (kẹt lại)]
-              </div>
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">👉 Nguyên nhân:</h4>
               <ul className="list-disc pl-6 space-y-2 leading-relaxed text-ink-old/90 mb-4">
@@ -898,9 +958,16 @@ const Theory: React.FC = () => {
                 <li>Công nghệ chủ yếu do nước ngoài nắm giữ</li>
               </ul>
 
-              <div className="w-full h-48 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
-                [Image Placeholder: Sơ đồ FDI → Sản xuất → Xuất khẩu (Việt Nam hưởng giá trị thấp)]
-              </div>
+              <div className="w-full my-8 bg-white border-2 border-sepia/30 rounded-lg p-6 shadow-lg flex flex-col items-center">
+  <img 
+    src="/images/FDI.png" 
+    alt="Sơ đồ FDI → Sản xuất → Xuất khẩu (Việt Nam hưởng giá trị thấp)" 
+    className="w-full max-w-xl h-auto border border-sepia/20 rounded shadow-md mb-3"
+  />
+  <p className="text-sm text-center text-sepia/70 italic mt-1">
+    Hình: Cán cân thương mại xuất khẩu
+  </p>
+</div>
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">👉 Vấn đề:</h4>
               <ul className="list-disc pl-6 space-y-2 leading-relaxed text-ink-old/90 mb-4">
@@ -929,9 +996,22 @@ const Theory: React.FC = () => {
                 <li>Ít sáng chế, đổi mới sáng tạo</li>
               </ul>
 
-              <div className="w-full h-48 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
-                [Image Placeholder: Sơ đồ Gia công → Giá trị thấp → Lợi nhuận thấp]
-              </div>
+              <div className="w-full my-8 bg-white border-2 border-sepia/30 rounded-lg p-6 shadow-lg flex flex-col items-center">
+  <div className="relative w-full flex flex-col items-center group">
+    <img 
+      src="/images/Unicorn.png" 
+      alt="Kỳ lân công nghệ (Tech Unicorn)" 
+      className="w-full max-w-xl h-auto border border-sepia/20 rounded shadow-md mb-3 cursor-pointer"
+    />
+    {/* Hover Tooltip */}
+    <div className="absolute left-1/2 -translate-x-1/2 top-0 mt-2 z-20 w-[350px] max-w-xs bg-white border border-gold-classic/60 rounded-lg shadow-lg px-4 py-3 text-xs text-ink-old/90 font-sans transition-opacity duration-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
+      Kỳ lân công nghệ (Tech Unicorn) là các công ty khởi nghiệp tư nhân trong lĩnh vực công nghệ có giá trị vốn hóa thị trường từ 1 tỷ USD trở lên, chưa niêm yết công khai. Thuật ngữ này ám chỉ sự hiếm có và tiềm năng tăng trưởng đột phá
+    </div>
+    <p className="text-sm text-center text-sepia/70 italic mt-1">
+      Hình: Tỉ lệ kì lân công nghê còn thấp
+    </p>
+  </div>
+</div>
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">👉 Nguyên nhân:</h4>
               <ul className="list-disc pl-6 space-y-2 leading-relaxed text-ink-old/90 mb-4">
@@ -1060,29 +1140,26 @@ const Theory: React.FC = () => {
           </section>
 
           {/* Chapter 6 */}
-          <section id="chapter-6" className="bg-parchment-old/50 p-8 md:p-12 border border-gold-classic/20 shadow-sm relative scroll-mt-24">
-            <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-gold-classic/50"></div>
-            <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-gold-classic/50"></div>
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-gold-classic/50"></div>
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold-classic/50"></div>
-            
-            <span className="text-gold-classic opacity-80 font-playfair text-sm mb-2 block uppercase tracking-widest">Chương 6</span>
-            <h2 className="text-3xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b border-gold-classic/20 pb-4">
-              Định Hướng Và Giải Pháp
-            </h2>
+          <section id="chapter-6" className="group bg-gradient-to-br from-indigo-50/90 via-parchment-old/70 to-indigo-50/50 p-8 md:p-12 border border-indigo-400/40 shadow-lg hover:shadow-2xl rounded-3xl relative scroll-mt-24 transition-all duration-500 transform hover:translate-y-[-6px] overflow-hidden" style={{
+            animation: 'slideUpIn 0.8s ease-out 0.6s both',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-indigo-500 via-indigo-500/50 to-transparent rounded-l-3xl"></div>
+            <div className="relative z-10">
+              <span className="inline-block text-indigo-600 opacity-95 font-playfair text-xs mb-3 uppercase tracking-widest font-bold px-3 py-1 bg-indigo-500/10 rounded-full border border-indigo-400/30">Chương 6</span>
+              <h2 className="text-3xl md:text-4xl font-playfair text-sepia mb-6 uppercase tracking-wider border-b-3 border-indigo-400/40 pb-4 transition-all duration-300 group-hover:border-indigo-400/70 group-hover:text-indigo-900">
+                Định Hướng Và Giải Pháp
+              </h2>
+            </div>
             <div className="prose prose-lg md:prose-xl prose-stone max-w-none text-ink-old">
               {/* Section 6.1 */}
-              <h3 className="text-2xl font-playfair text-sepia mt-8 mb-4 tracking-wider">1. Phát triển kinh tế số</h3>
+              <h3 className="text-3xl font-prata text-sepia mt-12 mb-6 tracking-tight leading-tight">1. Phát triển kinh tế số</h3>
               
               <h4 className="text-xl font-playfair text-sepia/90 mt-6 mb-3">Khái niệm:</h4>
               <p className="leading-loose text-justify mb-4">
-                Kinh tế số là nền kinh tế dựa trên:
+                Kinh tế số là toàn bộ các hoạt động kinh tế dựa trên việc sử dụng dữ liệu số và các nền tảng công nghệ số để tạo ra giá trị, hàng hóa và dịch vụ. Trong đó, các công nghệ cốt lõi bao gồm Internet, trí tuệ nhân tạo (AI), dữ liệu lớn (Big Data), điện toán đám mây (Cloud Computing) và Internet vạn vật (IoT).
               </p>
-              <ul className="list-disc pl-6 space-y-2 leading-relaxed text-ink-old/90 mb-4">
-                <li>Dữ liệu</li>
-                <li>Công nghệ số</li>
-                <li>Internet</li>
-              </ul>
+              
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">👉 Định hướng:</h4>
               <ul className="list-disc pl-6 space-y-2 leading-relaxed text-ink-old/90 mb-4">
@@ -1098,9 +1175,7 @@ const Theory: React.FC = () => {
                 <li>Doanh nghiệp vận hành trên nền tảng số</li>
               </ul>
 
-              <div className="w-full h-48 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
-                [Image Placeholder: Sơ đồ Truyền thống → Số hóa → Tự động → Thông minh]
-              </div>
+              
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">📌 Ý nghĩa:</h4>
               <div className="bg-gold-classic/10 border-l-4 border-gold-classic p-4 mb-8">
@@ -1139,9 +1214,7 @@ const Theory: React.FC = () => {
                 <li>Phát triển sản phẩm công nghệ "Make in Vietnam"</li>
               </ul>
 
-              <div className="w-full h-48 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
-                [Image Placeholder: Robot, nhà máy thông minh hoặc Công nghệ cao → Giá trị cao → Lợi nhuận cao]
-              </div>
+         
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">📌 Ý nghĩa:</h4>
               <div className="bg-gold-classic/10 border-l-4 border-gold-classic p-4 mb-8">
@@ -1178,9 +1251,7 @@ const Theory: React.FC = () => {
                 <li>Đầu tư ra nước ngoài</li>
               </ul>
 
-              <div className="w-full h-48 bg-sepia/5 border-2 border-dashed border-sepia/20 flex items-center justify-center italic text-sepia/60 my-8 shadow-inner">
-                [Image Placeholder: Sơ đồ Gia công → Thiết kế → Thương hiệu → Toàn cầu]
-              </div>
+       
 
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">📌 Vấn đề cần giải quyết:</h4>
               <div className="bg-red-500/10 border-l-4 border-red-500 p-4 mb-8">
@@ -1191,15 +1262,7 @@ const Theory: React.FC = () => {
               </div>
 
               {/* Strategic Focus */}
-              <div className="bg-blue-100/20 border-2 border-blue-600/40 p-6 my-8">
-                <h3 className="text-2xl font-playfair text-blue-900 mb-4 tracking-wider">🚨 Trọng tâm chiến lược</h3>
-                
-                <h4 className="text-lg font-playfair text-sepia/90 mt-4 mb-3">👉 Ba giải pháp này gắn chặt với nhau:</h4>
-                
-                <div className="w-full h-56 bg-white border-2 border-dashed border-blue-600/30 flex items-center justify-center italic text-blue-600 shadow-inner my-6">
-                  [Image Placeholder: Sơ đồ Kinh tế số → Công nghệ cao → Doanh nghiệp Việt mạnh → Làm chủ chuỗi giá trị]
-                </div>
-              </div>
+              
 
               {/* Quick Understanding */}
               <h3 className="text-2xl font-playfair text-sepia mt-10 mb-4 tracking-wider">⚡ Hiểu nhanh trong 30 giây</h3>
@@ -1246,26 +1309,42 @@ const Theory: React.FC = () => {
         </div>
 
         {/* Sidebar TOC */}
-        <aside className="lg:col-span-4 self-start sticky top-32">
-          <div className="border-l border-sepia/20 pl-8">
-            <h3 className="text-lg font-playfair text-sepia uppercase tracking-widest mb-8 flex items-center gap-3">
-              <span className="w-6 h-px bg-gold-classic"></span> Mục lục
+        <aside className="lg:col-span-4 self-start sticky top-32 hidden lg:block" style={{
+          animation: 'slideInRight 0.8s ease-out 0.2s both'
+        }}>
+          <div className="bg-gradient-to-br from-white via-white to-parchment-light/30 border border-gold-classic/30 rounded-2xl shadow-lg p-5 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:border-gold-classic/50">
+            <h3 className="text-lg font-prata text-sepia mb-4 flex items-center gap-2 font-bold tracking-tight">
+              <span className="w-8 h-1 bg-gradient-to-r from-gold-classic via-gold-classic/60 to-transparent rounded-full"></span>
+              <span>Mục Lục</span>
             </h3>
-            <ul className="space-y-6">
+            <ul className="space-y-2.5">
               {[
-                { title: "Khái Niệm Cơ Bản", id: "chapter-1" },
-                { title: "Nội Dung Và Đặc Trưng CNH – HĐH Ở Việt Nam", id: "chapter-2" },
-                { title: "Vai Trò Và Ý Nghĩa", id: "chapter-3" },
-                { title: "Thực Trạng Ở Việt Nam", id: "chapter-4" },
-                { title: "Vấn Đề Và Thách Thức", id: "chapter-5" },
-                { title: "Định Hướng Và Giải Pháp", id: "chapter-6" }
+                { title: "Khái Niệm Cơ Bản", id: "chapter-1", color: "from-amber-400", badge: "📚" },
+                { title: "Nội Dung Và Đặc Trưng CNH – HĐH Ở Việt Nam", id: "chapter-2", color: "from-blue-400", badge: "🏭" },
+                { title: "Vai Trò Và Ý Nghĩa", id: "chapter-3", color: "from-green-400", badge: "⭐" },
+                { title: "Thực Trạng Ở Việt Nam", id: "chapter-4", color: "from-purple-400", badge: "📊" },
+                { title: "Vấn Đề Và Thách Thức", id: "chapter-5", color: "from-red-400", badge: "⚠️" },
+                { title: "Định Hướng Và Giải Pháp", id: "chapter-6", color: "from-indigo-400", badge: "🎯" }
               ].map((item, index) => (
                 <li key={item.id} className="group relative">
-                  <a href={`#${item.id}`} className="block text-lg font-garamond text-ink-old/80 group-hover:text-sepia transition-colors pr-4 leading-relaxed">
-                    <span className="text-gold-classic opacity-70 font-playfair text-sm mr-2 block mb-1">Chương {index + 1}</span>
-                    {item.title}
+                  <a 
+                    href={`#${item.id}`} 
+                    className="block p-3 rounded-lg bg-white hover:bg-gradient-to-br hover:from-gold-classic/10 hover:to-white border border-gold-classic/15 hover:border-gold-classic/40 transition-all duration-300 group-hover:shadow-md hover:translate-y-[-2px]"
+                  >
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-2xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{item.badge}</span>
+                      <div className="flex-1 min-w-0">
+                        <span className={`text-xs font-bold uppercase tracking-widest bg-gradient-to-r ${item.color} to-transparent text-transparent bg-clip-text block mb-1 font-inter`}>
+                          Chương {index + 1}
+                        </span>
+                        <span className="text-sm font-merriweather text-ink-old/70 group-hover:text-sepia transition-all duration-300 line-clamp-2 leading-snug font-medium">
+                          {item.title}
+                        </span>
+                      </div>
+                    </div>
+                    {/* Hover indicator */}
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-gradient-to-b from-gold-classic to-transparent rounded-l opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </a>
-                  <div className="h-px w-0 bg-gold-classic group-hover:w-full transition-all duration-500 ease-out mt-2"></div>
                 </li>
               ))}
             </ul>
@@ -1273,7 +1352,142 @@ const Theory: React.FC = () => {
         </aside>
       </main>
 
-
+      {/* Custom Animations & Styling */}
+      <style>{`
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideUpIn {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* Enhanced typography */
+        h1, h2, h3 {
+          word-spacing: 0.1em;
+        }
+        
+        h2 {
+          letter-spacing: -0.01em;
+        }
+        
+        h3 {
+          letter-spacing: -0.005em;
+        }
+        
+        /* Enhanced list styling */
+        .prose ul li {
+          margin-top: 0.75rem;
+          line-height: 1.8;
+        }
+        
+        .prose p {
+          letter-spacing: 0.3px;
+        }
+        
+        /* Improved focus states for accessibility */
+        a:focus-visible {
+          outline: 2px solid #b08d57;
+          outline-offset: 3px;
+          border-radius: 0.375rem;
+        }
+        
+        /* Smooth hover transitions */
+        button, a {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Better prose styling */
+        .prose {
+          --tw-prose-borders: #d4a574;
+        }
+        
+        /* Enhanced paragraph spacing */
+        .prose p + p {
+          margin-top: 1.5rem;
+        }
+        
+        /* Improved heading spacing */
+        .prose h3 + p {
+          margin-top: 1.25rem;
+        }
+        
+        /* Better list item styling */
+        .prose ul > li::marker {
+          color: #b08d57;
+          font-weight: 600;
+        }
+        
+        /* Text shadow for depth */
+        h1 {
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Refined selection styling */
+        ::selection {
+          background-color: rgba(176, 141, 87, 0.3);
+          color: inherit;
+        }
+        
+        /* Smooth transitions for all elements */
+        * {
+          transition-property: color, background-color, border-color, box-shadow;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 200ms;
+        }
+      `}</style>
     </div>
   )
 }
