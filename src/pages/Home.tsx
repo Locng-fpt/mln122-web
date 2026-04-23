@@ -99,36 +99,54 @@ const Home: React.FC = () => {
           </div>
 
           {/* Sidebar (Quick Links/TOC) */}
-          <aside className="lg:col-span-4 self-start sticky top-32" id="muc-luc">
-            <div className="border-l border-sepia/20 pl-8">
-              <h3 className="text-lg font-playfair text-sepia uppercase tracking-widest mb-8 flex items-center gap-3">
-                <span className="w-6 h-px bg-gold-classic"></span> Mục lục
+          <aside className="lg:col-span-4 self-start sticky top-32" id="muc-luc" style={{
+            animation: 'slideInRight 0.8s ease-out 0.2s both'
+          }}>
+            <div className="bg-gradient-to-br from-white via-white to-parchment-light/30 border border-gold-classic/30 rounded-2xl shadow-lg p-5 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:border-gold-classic/50">
+              <h3 className="text-lg font-prata text-sepia mb-4 flex items-center gap-2 font-bold tracking-tight">
+                <span className="w-8 h-1 bg-gradient-to-r from-gold-classic via-gold-classic/60 to-transparent rounded-full"></span>
+                <span>Mục Lục</span>
               </h3>
-              <ul className="space-y-6">
+              <ul className="space-y-2.5">
                 {[
-                  "Công nghiệp hóa, Hiện đại hóa",
-                  "Hội nhập kinh tế quốc tế",
-                  "Phát triển kinh tế tri thức"
+                  { title: "Khái Niệm Cơ Bản", id: "chapter-1", color: "from-amber-400", badge: "📚" },
+                  { title: "Nội Dung Và Đặc Trưng CNH – HĐH Ở Việt Nam", id: "chapter-2", color: "from-blue-400", badge: "🏭" },
+                  { title: "Vai Trò Và Ý Nghĩa", id: "chapter-3", color: "from-green-400", badge: "⭐" },
+                  { title: "Thực Trạng Ở Việt Nam", id: "chapter-4", color: "from-purple-400", badge: "📊" },
+                  { title: "Vấn Đề Và Thách Thức", id: "chapter-5", color: "from-red-400", badge: "⚠️" },
+                  { title: "Định Hướng Và Giải Pháp", id: "chapter-6", color: "from-indigo-400", badge: "🎯" }
                 ].map((item, index) => (
-                  <li key={index} className="group relative">
-                    <Link to={`/theory#chapter-${index + 1}`} className="block text-lg font-garamond text-ink-old/80 group-hover:text-sepia transition-colors pr-4 leading-relaxed">
-                      <span className="text-gold-classic opacity-70 font-playfair text-sm mr-2 block mb-1">Chương {index + 1}</span>
-                      {item}
+                  <li key={item.id} className="group relative">
+                    <Link 
+                      to={`/theory#${item.id}`} 
+                      className="block p-3 rounded-lg bg-white hover:bg-gradient-to-br hover:from-gold-classic/10 hover:to-white border border-gold-classic/15 hover:border-gold-classic/40 transition-all duration-300 group-hover:shadow-md hover:translate-y-[-2px]"
+                    >
+                      <div className="flex items-start gap-2.5">
+                        <span className="text-2xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{item.badge}</span>
+                        <div className="flex-1 min-w-0">
+                          <span className={`text-xs font-bold uppercase tracking-widest bg-gradient-to-r ${item.color} to-transparent text-transparent bg-clip-text block mb-1 font-inter`}>
+                            Chương {index + 1}
+                          </span>
+                          <span className="text-sm font-merriweather text-ink-old/70 group-hover:text-sepia transition-all duration-300 line-clamp-2 leading-snug font-medium">
+                            {item.title}
+                          </span>
+                        </div>
+                      </div>
+                      {/* Hover indicator */}
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-gradient-to-b from-gold-classic to-transparent rounded-l opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </Link>
-                    {/* Hover decorative underline */}
-                    <div className="h-px w-0 bg-gold-classic group-hover:w-full transition-all duration-500 ease-out mt-2"></div>
                   </li>
                 ))}
               </ul>
               
-              {/* Quote Block */}
-              <div className="mt-16 p-6 border border-sepia/10 bg-parchment-old shadow-inner text-center">
-                <div className="text-4xl text-gold-classic/40 mb-2 font-playfair leading-none">"</div>
-                <p className="font-garamond italic text-sepia text-lg leading-relaxed px-4">
-                  Đẩy mạnh toàn diện, đồng bộ công cuộc đổi mới, công nghiệp hóa, hiện đại hóa; bảo vệ vững chắc Tổ quốc, giữ vững môi trường hòa bình, ổn định.
+              {/* Quote Block appended below TOC */}
+              <div className="mt-8 p-5 border border-sepia/10 bg-parchment-old/50 rounded-xl shadow-inner text-center">
+                <div className="text-3xl text-gold-classic/40 mb-1 font-playfair leading-none">"</div>
+                <p className="font-garamond italic text-sepia text-base leading-relaxed px-2">
+                  Đẩy mạnh toàn diện, đồng bộ công cuộc đổi mới, công nghiệp hóa, hiện đại hóa...
                 </p>
-                <div className="w-12 h-px bg-sepia/30 mx-auto mt-6 mb-3"></div>
-                <div className="text-xs font-playfair text-ink-old uppercase tracking-widest">Đảng Cộng sản Việt Nam</div>
+                <div className="w-10 h-px bg-sepia/30 mx-auto mt-4 mb-2"></div>
+                <div className="text-[10px] font-playfair text-ink-old uppercase tracking-widest">Đảng Cộng sản VN</div>
               </div>
             </div>
           </aside>

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { Footer } from './components/layout/Footer'
+import { ChatBox } from './components/chat/ChatBox'
 
 const Home = lazy(() => import('./pages/Home'))
 const Theory = lazy(() => import('./pages/Theory'))
@@ -23,6 +24,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <ChatBox />
         </div>
       </Suspense>
     </Router>

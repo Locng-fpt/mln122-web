@@ -1,53 +1,52 @@
 export type MatchingPair = {
-  term1: string
-  term2: string
+  term1: string;
+  term2: string;
   /**
    * Giải thích ý nghĩa thuật ngữ/cặp trong bối cảnh
    * Công nghiệp hóa - hiện đại hóa và hội nhập kinh tế Việt Nam.
    */
-  explanation: string
-}
+  explanation: string;
+};
 
 export const matchingPairs: MatchingPair[] = [
   {
     term1: 'Công nghiệp hóa',
-    term2: 'Chuyển đổi căn bản',
-    explanation: 'Công nghiệp hóa là quá trình chuyển đổi căn bản, toàn diện các hoạt động sản xuất kinh doanh, dịch vụ và quản lý kinh tế - xã hội...',
+    term2: 'Từ thủ công sang máy móc',
+    explanation: 'Là quá trình chuyển đổi căn bản, toàn diện các hoạt động sản xuất từ việc sử dụng sức lao động thủ công là chính sang sử dụng công nghệ, máy móc hiện đại để tạo ra năng suất lao động cao.',
   },
   {
     term1: 'Hiện đại hóa',
-    term2: 'Ứng dụng và trang bị',
-    explanation: 'Hiện đại hóa là quá trình ứng dụng và trang bị những thành tựu khoa học, công nghệ tiên tiến, hiện đại nhất vào trong các lĩnh vực của đời sống xã hội...',
+    term2: 'Ứng dụng công nghệ tiên tiến',
+    explanation: 'Là quá trình ứng dụng và trang bị những thành tựu khoa học, công nghệ tiên tiến, hiện đại nhất vào trong các lĩnh vực của đời sống xã hội và sản xuất.',
   },
   {
-    term1: 'Cơ sở vật chất',
-    term2: 'Cách mạng 4.0',
-    explanation: 'Sự cần thiết của công nghiệp hóa, hiện đại hóa ở Việt Nam trong bối cảnh cuộc Cách mạng công nghiệp 4.0 xuất phát từ yêu cầu phải xây dựng cơ sở vật chất - kỹ thuật cốt lõi cho Chủ nghĩa xã hội.',
+    term1: 'Mục tiêu cốt lõi',
+    term2: 'Xây dựng cơ sở vật chất - kỹ thuật',
+    explanation: 'Tiến hành CNH-HĐH nhằm xây dựng nền tảng cơ sở vật chất - kỹ thuật vững chắc cho Chủ nghĩa xã hội, đáp ứng yêu cầu bứt phá trong cuộc Cách mạng Công nghiệp 4.0.',
   },
   {
-    term1: 'Nguy cơ tụt hậu',
-    term2: 'Khắc phục',
-    explanation: 'Khắc phục nguy cơ tụt hậu xa hơn về kinh tế so với các nước trong khu vực và trên thế giới.',
+    term1: 'Tính tất yếu khách quan',
+    term2: 'Chống tụt hậu kinh tế',
+    explanation: 'Việt Nam đi lên từ một nước nông nghiệp lạc hậu, do đó đẩy mạnh CNH-HĐH là con đường duy nhất và tất yếu để khắc phục nguy cơ tụt hậu xa hơn về kinh tế so với thế giới.',
   },
   {
-    term1: 'Nguồn nhân lực',
-    term2: 'Chất lượng cao',
-    explanation: 'Tạo nền tảng để phát triển nguồn nhân lực chất lượng cao, chuyển đổi sang nền kinh tế tri thức số hóa.',
+    term1: 'Động lực phát triển',
+    term2: 'Nguồn nhân lực chất lượng cao',
+    explanation: 'Con người là yếu tố trung tâm. Việc đào tạo và phát triển nguồn nhân lực chất lượng cao, có kỹ năng số là nền tảng để chuyển đổi thành công sang nền kinh tế tri thức.',
   },
   {
-    term1: 'Liên minh',
-    term2: 'Công - nông - trí',
-    explanation: 'Củng cố liên minh công - nông - trí, tăng cường tiềm lực quốc phòng, an ninh, đảm bảo sự phát triển bền vững và tự chủ của quốc gia trong bối cảnh toàn cầu hóa.',
+    term1: 'Nền tảng xã hội',
+    term2: 'Liên minh Công - Nông - Trí',
+    explanation: 'Quá trình CNH-HĐH không chỉ phát triển kinh tế mà còn giúp củng cố vững chắc khối liên minh giữa giai cấp công nhân, nông dân và đội ngũ trí thức trong bối cảnh toàn cầu hóa.',
   },
   {
-    term1: 'Hội nhập kinh tế',
-    term2: 'Gắn kết quốc gia',
-    explanation: 'Hội nhập kinh tế quốc tế là quá trình gắn kết nền kinh tế quốc gia vào nền kinh tế khu vực và thế giới, thông qua việc tham gia các hiệp định...',
+    term1: 'Hội nhập quốc tế',
+    term2: 'Tham gia chuỗi giá trị toàn cầu',
+    explanation: 'Là quá trình gắn kết nền kinh tế Việt Nam với khu vực và thế giới thông qua các Hiệp định thương mại (như WTO, CPTPP...), giúp mở rộng thị trường và thu hút vốn đầu tư FDI.',
   },
   {
     term1: 'Thách thức hội nhập',
-    term2: 'Sức ép cạnh tranh',
-    explanation: 'Sức ép cạnh tranh gay gắt đối với các doanh nghiệp nội địa, nguy cơ gia tăng chênh lệch chất lượng nguồn nhân lực và rủi ro phụ thuộc kinh tế nếu không có chiến lược tự chủ.',
+    term2: 'Sức ép cạnh tranh gay gắt',
+    explanation: 'Khi mở cửa, các doanh nghiệp nội địa phải đối mặt với sức ép cạnh tranh khốc liệt từ các tập đoàn nước ngoài, đi kèm rủi ro rơi vào "bẫy thu nhập trung bình" nếu không tự chủ được công nghệ.',
   },
-]
-
+];

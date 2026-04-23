@@ -32,6 +32,9 @@ export const MatchingGame: React.FC = () => {
   const [isResolving, setIsResolving] = useState(false)
   const [resolution, setResolution] = useState<Resolution>(null)
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [matchedExplanation, setMatchedExplanation] = useState<{term1: string, term2: string, explanation: string} | null>(null)
+
   const [hintsLeft, setHintsLeft] = useState(3)
   const [hinted, setHinted] = useState<number[]>([])
 
@@ -62,6 +65,7 @@ export const MatchingGame: React.FC = () => {
   useEffect(() => {
     if (!isPlaying) return
     if (timeLeft <= 0) return
+    if (isModalOpen) return
 
     const id = window.setInterval(() => {
       setTimeLeft(prev => {
@@ -71,7 +75,7 @@ export const MatchingGame: React.FC = () => {
     }, 1000)
 
     return () => window.clearInterval(id)
-  }, [isPlaying, timeLeft])
+  }, [isPlaying, timeLeft, isModalOpen])
 
   useEffect(() => {
     if (!isPlaying) return
@@ -114,6 +118,7 @@ export const MatchingGame: React.FC = () => {
     if (isResolving) return
     if (flipped.length !== 2) return
     if (timeLeft <= 0) return
+    if (resolution !== null) return
 
     setIsResolving(true)
 
@@ -137,13 +142,16 @@ export const MatchingGame: React.FC = () => {
         title: 'Ghép đúng',
         body: pair?.explanation ?? 'Bạn đã ghép đúng một cặp.',
       })
-      window.setTimeout(() => {
+      if (pair) {
+        setMatchedExplanation({ term1: pair.term1, term2: pair.term2, explanation: pair.explanation })
+        setIsModalOpen(true)
+      } else {
         setMatched(prev => [...prev, first, second])
         setScore(prev => prev + SCORE_MATCH)
         setFlipped([])
         setIsResolving(false)
         setResolution(null)
-      }, RESOLVE_DELAY_MS)
+      }
       return
     }
 
@@ -154,21 +162,40 @@ export const MatchingGame: React.FC = () => {
       title: 'Chưa đúng',
       body: `Thẻ "${firstCard.text}" thực chất thuộc về "${firstCard.text === correctPair.term1 ? correctPair.term2 : correctPair.term1}".\n\nGiải thích: ${correctPair.explanation}`,
     })
-    window.setTimeout(() => {
-      setScore(prev => Math.max(0, prev - SCORE_MISMATCH_PENALTY))
+    
+    setScore(prev => Math.max(0, prev - SCORE_MISMATCH_PENALTY))
+    setIsResolving(false)
+  }, [cards, flipped, isPlaying, isResolving, timeLeft, resolution])
+
+  const handleContinue = () => {
+    setIsModalOpen(false)
+    if (flipped.length === 2) {
+      const [first, second] = flipped
+      setMatched(prev => [...prev, first, second])
+      setScore(prev => prev + SCORE_MATCH)
       setFlipped([])
-      setIsResolving(false)
-      setResolution(null)
-    }, RESOLVE_DELAY_MS)
-  }, [cards, flipped, isPlaying, isResolving, timeLeft])
+    }
+    setIsResolving(false)
+    setResolution(null)
+  }
 
   const handleCardClick = (index: number) => {
     if (!isPlaying) return
     if (timeLeft <= 0) return
     if (isResolving) return
-    if (flipped.length >= 2) return
     if (flipped.includes(index)) return
     if (matched.includes(index)) return
+
+    if (flipped.length >= 2) {
+      setFlipped([index])
+      setResolution(null)
+      setFeedback({
+        kind: 'info',
+        title: 'Chọn thêm 1 thẻ',
+        body: 'Hãy lật thêm một thẻ để kiểm tra cặp tương ứng.',
+      })
+      return
+    }
 
     setFlipped(prev => {
       const next = [...prev, index]
@@ -184,7 +211,17 @@ export const MatchingGame: React.FC = () => {
   }
 
   const handleHintClick = () => {
-    if (!isPlaying || hintsLeft <= 0 || isResolving || flipped.length > 0) return
+    if (!isPlaying || hintsLeft <= 0) return
+
+    if (flipped.length > 0) {
+      setFlipped([])
+      setResolution(null)
+      setFeedback({
+        kind: 'info',
+        title: 'Gợi ý',
+        body: 'Thẻ gợi ý đang phát sáng viền xanh.',
+      })
+    }
 
     const unmatchedCard = cards.find((c, idx) => !matched.includes(idx) && !hinted.includes(idx))
     if (!unmatchedCard) return
@@ -211,6 +248,8 @@ export const MatchingGame: React.FC = () => {
     setIsResolving(false)
     setResolution(null)
     setHinted([])
+    setIsModalOpen(false)
+    setMatchedExplanation(null)
 
     setTimeLeft(DEFAULT_TIME_SECONDS)
     setHintsLeft(3)
@@ -234,6 +273,8 @@ export const MatchingGame: React.FC = () => {
     setIsResolving(false)
     setResolution(null)
     setHinted([])
+    setIsModalOpen(false)
+    setMatchedExplanation(null)
 
     setTimeLeft(DEFAULT_TIME_SECONDS)
     setHintsLeft(3)
@@ -295,8 +336,8 @@ export const MatchingGame: React.FC = () => {
           {phase === 'playing' && (
             <button 
               onClick={handleHintClick}
-              disabled={hintsLeft <= 0 || isResolving || flipped.length > 0}
-              className={`px-4 py-2 border border-sepia/25 shadow-inner font-playfair tracking-widest uppercase text-xs md:text-sm transition-colors ${hintsLeft > 0 && !isResolving && flipped.length === 0 ? 'bg-gold-classic/20 text-sepia hover:bg-gold-classic/40 cursor-pointer' : 'bg-parchment-old/50 text-sepia/40 cursor-not-allowed'}`}
+              disabled={hintsLeft <= 0}
+              className={`px-4 py-2 border border-sepia/25 shadow-inner font-playfair tracking-widest uppercase text-xs md:text-sm transition-colors ${hintsLeft > 0 ? 'bg-gold-classic/20 text-sepia hover:bg-gold-classic/40 cursor-pointer' : 'bg-parchment-old/50 text-sepia/40 cursor-not-allowed'}`}
             >
               💡 Gợi ý ({hintsLeft})
             </button>
@@ -495,6 +536,45 @@ export const MatchingGame: React.FC = () => {
                 </div>
               </aside>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Success Modal */}
+      <AnimatePresence>
+        {isModalOpen && matchedExplanation && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="max-w-md w-full bg-parchment-light border-4 border-emerald-500 rounded-2xl shadow-2xl p-6 flex flex-col items-center text-center"
+            >
+              <div className="text-5xl mb-4">🎉</div>
+              <h2 className="text-3xl font-playfair font-black text-emerald-600 mb-4 uppercase tracking-widest drop-shadow-sm">
+                Ghép Đúng Rồi!
+              </h2>
+              <div className="bg-emerald-50 w-full p-4 rounded-xl border border-emerald-200 mb-6">
+                <p className="font-playfair font-bold text-xl text-sepia mb-2">
+                  <span className="text-emerald-700">{matchedExplanation.term1}</span> <span className="text-sepia/50">-</span> <span className="text-emerald-700">{matchedExplanation.term2}</span>
+                </p>
+                <div className="w-16 h-px bg-emerald-300 mx-auto my-3"></div>
+                <p className="font-garamond text-lg text-ink-old/90 leading-relaxed text-justify">
+                  {matchedExplanation.explanation}
+                </p>
+              </div>
+              <button
+                onClick={handleContinue}
+                className="w-full py-4 bg-emerald-600 text-white hover:bg-emerald-700 transition-colors duration-300 font-playfair uppercase tracking-widest text-lg font-bold rounded-xl shadow-[0_4px_0_rgb(4,120,87)] hover:shadow-[0_0px_0_rgb(4,120,87)] hover:translate-y-[4px]"
+              >
+                Tiếp tục
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
