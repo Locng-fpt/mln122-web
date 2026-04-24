@@ -18,7 +18,7 @@ Nếu người dùng hỏi BẤT CỨ ĐIỀU GÌ nằm ngoài chủ đề "Côn
 Không được thêm bớt bất kỳ từ nào vào câu từ chối này.
 `;
 
-const INITIAL_MESSAGE = "Xin chào! Mình là Míc Lê Nan AI - Nói chậm rất duyên và nói chuyện rất có tâm. Mình sẵn sàng hỗ trợ bạn hết mình! Bạn có vấn đề gì thắc mắc nè. Cứ hỏi mình nha :>";
+const INITIAL_MESSAGE = "Xin chào! Mình là Míc Lê Nan AI. Mình sẵn sàng hỗ trợ bạn hết mình! Bạn có vấn đề gì thắc mắc nè. Cứ hỏi mình nha :>";
 
 interface Message {
   role: 'user' | 'model';
