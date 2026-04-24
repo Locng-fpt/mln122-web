@@ -588,7 +588,18 @@ const Theory: React.FC = () => {
                 <li>Thu nhập bình quân tăng</li>
                 <li>Điều kiện sống (y tế, giáo dục, hạ tầng) được cải thiện</li>
               </ul>
-
+              
+              <div className="my-8 group">
+                <div className="relative overflow-auto rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center bg-white p-2">
+                  <img 
+                    src="/images/ThuNhap.png" 
+                    alt="Thu nhập và đời sống nhân dân" 
+                    className="h-auto max-w-full border border-sepia/20 rounded-2xl transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-sm text-center text-sepia/70 italic mt-4 font-medium">Hình 3.2: Sự cải thiện thu nhập và điều kiện sống của nhân dân</p>
+              </div>
+              
               <h4 className="text-lg font-playfair text-sepia/90 mt-6 mb-3">📍 Ví dụ:</h4>
               <div className="bg-gold-classic/10 border-l-4 border-gold-classic p-4 mb-6">
                 <ul className="list-disc pl-6 space-y-2 text-ink-old/90 text-sm">
@@ -604,6 +615,9 @@ const Theory: React.FC = () => {
                   <li>Chênh lệch giữa thành thị và nông thôn</li>
                 </ul>
               </div>
+
+              {/* Image: Income illustration */}
+              
 
               {/* Section 3.3 */}
               <h3 className="text-2xl font-playfair text-sepia mt-10 mb-4 tracking-wider">3. Thúc đẩy hội nhập quốc tế</h3>
